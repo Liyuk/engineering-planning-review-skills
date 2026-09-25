@@ -70,4 +70,4 @@ When this plan was written, the repository had no configured public remote, the 
 
 ## Subsequent licensing decision
 
-This plan records the release boundary at the time it was written. The user later chose MIT for the entire repository; [ADR 0003](../../../agent/adr/0003-repository-wide-mit-license.md) and the root `LICENSE` supersede the provisional per-skill licensing status above. The GitHub repository remains private until separately changed.
+This plan records the release boundary at the time it was written. The user later chose MIT for the entire repository; [ADR 0003](../../../agent/adr/0003-repository-wide-mit-license.md) and the root `LICENSE` supersede the provisional per-skill licensing status above. GitHub currently reports the repository as public; visibility is a separate setting from the license decision.

@@ -42,16 +42,16 @@ cp -R skills/tech-planning ~/.codex/skills/
 也可用 npm 提供的 [skills CLI](https://github.com/vercel-labs/skills) 从 Git 仓库安装单项 skill；这里使用 npm 执行的是通用安装工具，**不需要把本项目发布成 npm 包**：
 
 ```sh
-npx skills add OWNER/REPO --skill metric-decision --agent codex --global
+npx skills add Liyuk/engineering-planning-review-skills --skill metric-decision --agent codex --global
 ```
 
-本仓库远端为私有仓库，安装者需要有 GitHub 访问权限；本地使用时也可以直接复制所需目录到 `~/.codex/skills/`，再调用 `$metric-decision`。发布给社区时，应先准备可公开且许可明确的仓库，再使用公开仓库地址。只在增加需要 npm 管理的可执行 CLI、共享运行时或依赖/版本 API 时，才考虑发布 npm 包。
+本仓库已公开并采用 MIT 许可证，可从 GitHub 安装单项技能；本地使用时也可以直接复制所需目录到 `~/.codex/skills/`，再调用 `$metric-decision`。只在增加需要 npm 管理的可执行 CLI、共享运行时或依赖/版本 API 时，才考虑发布 npm 包。
 
 ## 面向社区的采用路径
 
 优先用一个具体问题介绍它：**指标变了，先判断变化是否可信，再决定做什么。**目标读者是需要在产品、工程与数据口径之间作决策的技术负责人、产品负责人和分析工程师。展示“埋点迁移与指标下降同时发生”的完整例子，比泛称“数据分析助手”更能体现它解决的工作环节。
 
-当前 GitHub 远端 [`Liyuk/engineering-planning-review-skills`](https://github.com/Liyuk/engineering-planning-review-skills) 为私有仓库，尚未向社区公开。仓库现统一采用 MIT 许可证；若要让社区安装，仍需公开可访问的仓库或单独发布公开副本。Skills CLI 从 Git 仓库选取技能，并不要求每个仓库发布 npm 包。[Skills CLI 文档](https://github.com/vercel-labs/skills) · [Skills 目录格式说明](https://developers.openai.com/plugins/build/skills)
+GitHub 远端 [`Liyuk/engineering-planning-review-skills`](https://github.com/Liyuk/engineering-planning-review-skills) 目前公开，整个仓库统一采用 MIT 许可证。社区用户可以使用上面的命令安装单项技能。Skills CLI 从 Git 仓库选取技能，并不要求每个仓库发布 npm 包。[Skills CLI 文档](https://github.com/vercel-labs/skills) · [Skills 目录格式说明](https://developers.openai.com/plugins/build/skills)
 
 目前只在 Codex 上完成了发现与复制安装烟雾检查。CLI 支持多种 agent，但该技能尚未逐一验证其他 agent 的触发和输出行为；发布时应明确这个验证范围。[Skills CLI README](https://github.com/vercel-labs/skills/blob/main/README.md)
 
@@ -87,7 +87,7 @@ python3 scripts/validate_repo.py
 
 整个仓库统一采用 [MIT License](LICENSE)，SPDX 标识为 `MIT`。四个独立安装的 skill 入口都声明 `license: MIT`，且每个 skill 目录附有相同的 `LICENSE`，以便单独复制时也带上完整许可文本。根目录 `LICENSE` 是规范副本；标准 MIT 文本要求在副本或实质部分中保留版权与许可声明，并按“现状”提供且不作担保。参见 [OSI 的 MIT 文本](https://opensource.org/license/mit)。
 
-仓库目前仍为私有；MIT 许可已确定，但社区用户还不能访问远端。公开分发时应发布可访问的 GitHub 仓库，并继续保留本文提到的外部来源链接与来源边界。
+仓库目前公开可访问。继续保留研究材料中的外部来源链接和来源边界。
 
 ## npm 发布判断
 
