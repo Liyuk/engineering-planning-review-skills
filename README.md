@@ -1,6 +1,6 @@
-# Engineering Planning & Review Skills
+# Engineering Decision Skills
 
-面向中文技术管理场景的一组可独立安装、组合使用的 Agent Skills，覆盖技术规划、技术方案评审和管理材料整理。
+面向中文技术管理场景的一组可独立安装、按需组合的 Agent Skills，覆盖技术规划、技术评审、指标决策和工程汇报。仓库按 Agent Skills 的目录格式组织：每项能力以 `SKILL.md` 为入口，可带 references、assets 和脚本；它们不是必须编译或运行的 Node.js 库。[OpenAI Skills 文档](https://developers.openai.com/api/docs/guides/tools-skills) · [Vercel Skills CLI](https://github.com/vercel-labs/skills)
 
 ## Skills
 
@@ -11,7 +11,7 @@
 | 管理材料 `$eng-reporting` | 将项目证据整理为汇报、总结、复盘、述职或晋升材料 | [`skills/eng-reporting/SKILL.md`](skills/eng-reporting/SKILL.md) |
 | 指标决策 `$metric-decision` | 定义/核验指标、调查变化、将证据转为可验证行动 | [`skills/metric-decision/SKILL.md`](skills/metric-decision/SKILL.md) |
 
-每个 skill 都是独立目录，可单独复制到 Agent 的 skills 搜索路径。组合使用时，建议按“规划 → 评审 → 基于确认事实整理材料”的顺序；它们不要求一起安装。
+每个 skill 都是独立目录，可单独复制到 Agent 的 skills 搜索路径。按当前任务调用即可；组合使用时，建议按“规划 → 评审 → 基于确认事实整理材料”流转，但它们不要求一起安装。
 
 ### 推荐先试：`$metric-decision`
 
@@ -39,19 +39,19 @@ cp -R skills/tech-planning ~/.codex/skills/
 
 将需要的技能目录复制到 `~/.codex/skills/` 后，可在 Codex 中用表格里的 `$技能名` 显式调用；也可以直接描述任务，由模型根据技能名称和描述判断是否使用。
 
-仓库发布到 GitHub 后，也可用 [skills CLI](https://github.com/vercel-labs/skills) 单独安装，不必安装整个集合：
+也可用 npm 提供的 [skills CLI](https://github.com/vercel-labs/skills) 从 Git 仓库安装单项 skill；这里使用 npm 执行的是通用安装工具，**不需要把本项目发布成 npm 包**：
 
 ```sh
 npx skills add OWNER/REPO --skill metric-decision --agent codex --global
 ```
 
-`OWNER/REPO` 需要替换为实际公开仓库地址。尚未发布前，可从仓库根目录运行 `npx skills add ./skills/metric-decision --list` 检查单项技能能否被发现；要使用它则复制该目录到 `~/.codex/skills/`，再调用 `$metric-decision`。
+本仓库远端为私有仓库，安装者需要有 GitHub 访问权限；本地使用时也可以直接复制所需目录到 `~/.codex/skills/`，再调用 `$metric-decision`。发布给社区时，应先准备可公开且许可明确的仓库，再使用公开仓库地址。只在增加需要 npm 管理的可执行 CLI、共享运行时或依赖/版本 API 时，才考虑发布 npm 包。
 
 ## 面向社区的采用路径
 
 优先用一个具体问题介绍它：**指标变了，先判断变化是否可信，再决定做什么。**目标读者是需要在产品、工程与数据口径之间作决策的技术负责人、产品负责人和分析工程师。展示“埋点迁移与指标下降同时发生”的完整例子，比泛称“数据分析助手”更能体现它解决的工作环节。
 
-公开使用前，先确认各技能的授权范围并设置清晰的许可证；当前仓库尚无公开地址，且 [`eng-reporting`](skills/eng-reporting/SKILL.md) 标记为 Proprietary，因此不能把整仓作为开放许可内容发布。确定可公开的仓库和许可后，社区用户可用上面的命令只安装 `metric-decision`。Skills CLI 文档说明，排行榜基于匿名聚合安装次数，公开仓库经用户实际安装后会自动计入；安装可见度依赖有人试用，README 示例、可复用评测用例和清楚的边界说明才是当前可落实的采用材料。[Skills CLI FAQ](https://www.skills.sh/docs/faq)
+当前 GitHub 远端 [`Liyuk/engineering-planning-review-skills`](https://github.com/Liyuk/engineering-planning-review-skills) 为私有仓库，尚未向社区公开。公开使用前，需要先确认各技能的授权范围并设置清晰的许可证；[`eng-reporting`](skills/eng-reporting/SKILL.md) 标记为 Proprietary，其余三个技能也未声明许可证，因此不能把整仓作为开放许可内容发布。Skills CLI 的安装方式是从 Git 仓库选取技能，并非要求每个仓库发布 npm 包；社区分发前仍需准备权限可访问、许可明确的公开来源。[Skills CLI 文档](https://github.com/vercel-labs/skills) · [Skills 目录格式说明](https://developers.openai.com/plugins/build/skills)
 
 目前只在 Codex 上完成了发现与复制安装烟雾检查。CLI 支持多种 agent，但该技能尚未逐一验证其他 agent 的触发和输出行为；发布时应明确这个验证范围。[Skills CLI README](https://github.com/vercel-labs/skills/blob/main/README.md)
 
@@ -81,7 +81,7 @@ scripts/                      结构及引用校验工具
 python3 scripts/validate_repo.py
 ```
 
-该工具检查技能目录和 frontmatter 名称、Markdown 本地链接，以及 `evals/evals.json` 的 JSON 格式。每项技能包含缺数据、冲突信息和正常方案用例；`metric-decision` 另有“数据已核实但因果未明”的边界用例。人工复核时使用 [`agent/eval-rubric.md`](agent/eval-rubric.md) 的事实克制、任务匹配、可执行性、格式和语气五项量规及判分示例。结构校验不等于行为评测。
+该工具检查技能目录和 frontmatter 名称、Markdown 本地链接，以及 `evals/evals.json` 的 JSON 格式。四项技能当前共有 28 个 prompt，用例覆盖缺数据、冲突信息、正常任务、决策压力和四个公开案例。四个公开案例做过无技能/启用技能配对评分；两项针对失败的回归在修改后重跑。评测方法、分项分数和限制见 [`docs/methodology/public-case-evaluation.md`](docs/methodology/public-case-evaluation.md)。人工复核使用 [`agent/eval-rubric.md`](agent/eval-rubric.md) 的事实克制、任务匹配、可执行性、格式和语气五项量规。结构校验不等于行为评测。
 
 ## 许可证
 
@@ -89,9 +89,14 @@ python3 scripts/validate_repo.py
 
 因此，当前安装说明用于本地试用和发现验证，不代表仓库已获准公开再分发。面向社区发布前，需要明确新技能和原有各技能的许可证边界；尤其不能把声明为 `Proprietary` 的材料默认打包进开放许可集合。
 
+## npm 发布判断
+
+本项目目前是 Markdown 工作流和配套参考文件，直接按 skill 目录安装即可，不需要创建 `package.json` 或发布 npm 包。npm 在这里仅用于运行 `npx skills` 安装 CLI。只有当项目新增独立可执行工具、需要依赖管理/语义化版本 API，或需要被其他 Node.js 程序作为库调用时，才值得评估 npm 包；若只是面向 Agent 分发 skill，先发布许可证明确的 GitHub 仓库并用 Skills CLI 安装更合适。
+
 ## 研究
 
 - [GitHub 社区相似 Skill 项目调研](docs/research/github-similar-skill-repositories.md)
+- [公开工程案例及四项技能评测](docs/research/public-case-materials.md) · [评测结果](docs/methodology/public-case-evaluation.md)
 - [个人写作方法到技能的映射](docs/methodology/writing-to-skills-map.md)
 - [`metric-decision` 行为验收记录](docs/methodology/metric-decision-evaluation.md)
 - [四项技能用途、边界和价值评审](docs/methodology/skills-portfolio-review.md)
