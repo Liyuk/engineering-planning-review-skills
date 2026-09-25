@@ -50,7 +50,13 @@ For one pressure case per skill, an evaluator agent generated a no-skill answer 
 
 Score tuple order is fact restraint, task match, actionability, format, tone. Each 0–2 judgment is tied to the corresponding behavior described in the observation column. The only observed scored gap was reporting actionability in this sample; the other comparisons are consistency checks, not evidence that the skill is necessary for a capable model to reach the same conclusion.
 
-These results show format and method consistency in these prompts, not a general score gain. The repository currently contains 28 eval prompts across the four skills. Ten selected scenarios have paired baseline/skill spot checks: six earlier synthetic cases and four source-grounded public engineering cases. The public-case results are recorded in [`public-case-evaluation.md`](public-case-evaluation.md); the earlier comparisons are summarized above and in the metric evaluation note. Five earlier pressure scenarios remain candidate regression cases without a matched behavior run, and most prompt cases have not been paired. Do not describe this qualitative set as broad effectiveness evidence.
+These results show format and method consistency in these prompts, not a general score gain. The repository currently contains 29 eval prompts across the four skills. Ten selected scenarios have paired baseline/skill spot checks: six earlier synthetic cases and four source-grounded public engineering cases. The public-case results are recorded in [`public-case-evaluation.md`](public-case-evaluation.md); the earlier comparisons are summarized above and in the metric evaluation note. Five earlier pressure scenarios remain candidate regression cases without a matched behavior run, and most prompt cases have not been paired. Do not describe this qualitative set as broad effectiveness evidence.
+
+## Additional skill-guided behavior check
+
+On 2026-09-24, separate runs used each skill for one missing-data case, one conflicting-information case, and one normal case. Rubric scores were planning 10/10, 10/10, 9/10; review 10/10 on all three; reporting 10/10 on all three; and metric decision 10/10 on all three. The 9/10 planning answer stated that a checkout owner was responsible for the outcome even though the prompt had not assigned that role. This was a concrete evidence-boundary failure, not a general weakness in the skill.
+
+The planning instructions now distinguish confirmed responsibility from suggested assignment, and the eval suite includes an explicit unconfirmed-owner boundary case. The same normal case and the new boundary case were rerun with the updated skill; both scored 10/10. These are single-run rubric judgments by the repository evaluator, not blind or no-skill comparisons. They show that the observed defect was corrected on these prompts; they do not establish broad effectiveness.
 
 ## Publication guidance
 

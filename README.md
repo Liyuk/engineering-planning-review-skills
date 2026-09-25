@@ -47,6 +47,14 @@ npx skills add Liyuk/engineering-planning-review-skills --skill metric-decision 
 
 本仓库已公开并采用 MIT 许可证，可从 GitHub 安装单项技能；本地使用时也可以直接复制所需目录到 `~/.codex/skills/`，再调用 `$metric-decision`。只在增加需要 npm 管理的可执行 CLI、共享运行时或依赖/版本 API 时，才考虑发布 npm 包。
 
+默认安装命令从仓库当前主分支获取最新版。需要固定版本时，可用 GitHub tag 对应的技能目录，例如：
+
+```sh
+npx skills add https://github.com/Liyuk/engineering-planning-review-skills/tree/v1.0.0/skills/metric-decision --agent codex --global
+```
+
+版本变更见 [`CHANGELOG.md`](CHANGELOG.md) 和 [GitHub Releases](https://github.com/Liyuk/engineering-planning-review-skills/releases)。
+
 ## 面向社区的采用路径
 
 优先用一个具体问题介绍它：**指标变了，先判断变化是否可信，再决定做什么。**目标读者是需要在产品、工程与数据口径之间作决策的技术负责人、产品负责人和分析工程师。展示“埋点迁移与指标下降同时发生”的完整例子，比泛称“数据分析助手”更能体现它解决的工作环节。
@@ -81,7 +89,7 @@ scripts/                      结构及引用校验工具
 python3 scripts/validate_repo.py
 ```
 
-该工具检查技能目录和 frontmatter 名称、Markdown 本地链接，以及 `evals/evals.json` 的 JSON 格式。四项技能当前共有 28 个 prompt，用例覆盖缺数据、冲突信息、正常任务、决策压力和四个公开案例。四个公开案例做过无技能/启用技能配对评分；两项针对失败的回归在修改后重跑。评测方法、分项分数和限制见 [`docs/methodology/public-case-evaluation.md`](docs/methodology/public-case-evaluation.md)。人工复核使用 [`agent/eval-rubric.md`](agent/eval-rubric.md) 的事实克制、任务匹配、可执行性、格式和语气五项量规。结构校验不等于行为评测。
+该工具检查技能目录和 frontmatter 名称、Markdown 本地链接，以及 `evals/evals.json` 的 JSON 格式。四项技能当前共有 29 个 prompt，用例覆盖缺数据、冲突信息、正常任务、决策压力和四个公开案例。四个公开案例做过无技能/启用技能配对评分；两项针对失败的回归在修改后重跑。另对四项技能各运行了缺数据、冲突信息和正常任务共 12 个行为抽查，发现并修正了一项未确认责任人的归属问题；单轮抽查不代表普遍效果。评测方法、分项分数和限制见 [`docs/methodology/public-case-evaluation.md`](docs/methodology/public-case-evaluation.md) 与 [`docs/methodology/skills-portfolio-review.md`](docs/methodology/skills-portfolio-review.md)。人工复核使用 [`agent/eval-rubric.md`](agent/eval-rubric.md) 的事实克制、任务匹配、可执行性、格式和语气五项量规。结构校验不等于行为评测。
 
 ## 许可证
 
