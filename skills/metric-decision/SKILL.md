@@ -1,6 +1,7 @@
 ---
 name: metric-decision
 description: Use when the metric itself needs definition or validation, when a product/engineering metric changes unexpectedly, or when measurement evidence must support an action. Use tech-review for broader proposal review.
+license: MIT
 ---
 
 # Metric Decision

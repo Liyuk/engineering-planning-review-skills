@@ -1,6 +1,7 @@
 ---
 name: tech-planning
 description: Use when shaping a technical strategy or roadmap, comparing engineering investments, analyzing business constraints, or translating priorities into capacity, milestones, dependencies, and measurable outcomes.
+license: MIT
 ---
 
 # 技术规划

@@ -51,7 +51,7 @@ npx skills add OWNER/REPO --skill metric-decision --agent codex --global
 
 优先用一个具体问题介绍它：**指标变了，先判断变化是否可信，再决定做什么。**目标读者是需要在产品、工程与数据口径之间作决策的技术负责人、产品负责人和分析工程师。展示“埋点迁移与指标下降同时发生”的完整例子，比泛称“数据分析助手”更能体现它解决的工作环节。
 
-当前 GitHub 远端 [`Liyuk/engineering-planning-review-skills`](https://github.com/Liyuk/engineering-planning-review-skills) 为私有仓库，尚未向社区公开。公开使用前，需要先确认各技能的授权范围并设置清晰的许可证；[`eng-reporting`](skills/eng-reporting/SKILL.md) 标记为 Proprietary，其余三个技能也未声明许可证，因此不能把整仓作为开放许可内容发布。Skills CLI 的安装方式是从 Git 仓库选取技能，并非要求每个仓库发布 npm 包；社区分发前仍需准备权限可访问、许可明确的公开来源。[Skills CLI 文档](https://github.com/vercel-labs/skills) · [Skills 目录格式说明](https://developers.openai.com/plugins/build/skills)
+当前 GitHub 远端 [`Liyuk/engineering-planning-review-skills`](https://github.com/Liyuk/engineering-planning-review-skills) 为私有仓库，尚未向社区公开。仓库现统一采用 MIT 许可证；若要让社区安装，仍需公开可访问的仓库或单独发布公开副本。Skills CLI 从 Git 仓库选取技能，并不要求每个仓库发布 npm 包。[Skills CLI 文档](https://github.com/vercel-labs/skills) · [Skills 目录格式说明](https://developers.openai.com/plugins/build/skills)
 
 目前只在 Codex 上完成了发现与复制安装烟雾检查。CLI 支持多种 agent，但该技能尚未逐一验证其他 agent 的触发和输出行为；发布时应明确这个验证范围。[Skills CLI README](https://github.com/vercel-labs/skills/blob/main/README.md)
 
@@ -85,9 +85,9 @@ python3 scripts/validate_repo.py
 
 ## 许可证
 
-当前没有全仓统一许可证。汇报材料技能声明为 `Proprietary`；其余三项技能没有声明许可证。安装技术上可行不等于获得再分发许可，请在确认每项技能的授权范围前，不要将其视为可自由再发布的内容。
+整个仓库统一采用 [MIT License](LICENSE)，SPDX 标识为 `MIT`。四个独立安装的 skill 入口都声明 `license: MIT`，且每个 skill 目录附有相同的 `LICENSE`，以便单独复制时也带上完整许可文本。根目录 `LICENSE` 是规范副本；标准 MIT 文本要求在副本或实质部分中保留版权与许可声明，并按“现状”提供且不作担保。参见 [OSI 的 MIT 文本](https://opensource.org/license/mit)。
 
-因此，当前安装说明用于本地试用和发现验证，不代表仓库已获准公开再分发。面向社区发布前，需要明确新技能和原有各技能的许可证边界；尤其不能把声明为 `Proprietary` 的材料默认打包进开放许可集合。
+仓库目前仍为私有；MIT 许可已确定，但社区用户还不能访问远端。公开分发时应发布可访问的 GitHub 仓库，并继续保留本文提到的外部来源链接与来源边界。
 
 ## npm 发布判断
 

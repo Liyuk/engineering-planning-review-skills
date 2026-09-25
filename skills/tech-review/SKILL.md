@@ -1,6 +1,7 @@
 ---
 name: tech-review
 description: Use when reviewing an existing technical proposal, architecture, benchmark, AI adoption plan, or decision brief for evidence, trade-offs, delivery risk, and decision readiness. Use tech-planning to create a new roadmap.
+license: MIT
 ---
 
 # 技术方案评审

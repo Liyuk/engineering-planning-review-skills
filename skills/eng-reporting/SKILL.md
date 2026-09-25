@@ -1,7 +1,7 @@
 ---
 name: eng-reporting
 description: Use when turning notes, meeting records, project evidence, or engineering achievements into a management update, project summary, retrospective, self-review, or promotion narrative.
-license: Proprietary
+license: MIT
 compatibility: 适用于可读取文档、妙记摘要、文本笔记和本地参考文件的 Agent 环境，适合结构化写作、材料提炼和叙事重组任务。
 metadata:
   author: mira-generated

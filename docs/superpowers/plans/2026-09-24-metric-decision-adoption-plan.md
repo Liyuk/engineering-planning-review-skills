@@ -64,6 +64,10 @@
 - The shared rubric now includes concrete 0/1/2 calibration anchors for a causal-boundary scenario. These evaluations still use one sample per condition and are agent-scored, not a blinded human or multi-model study.
 - No public remote or repository-wide license is configured. Public upload and redistribution are not complete; permission boundaries are retained in the README.
 
-## Release boundary
+## Release boundary at plan time
 
-The repository has no configured public remote, and the reporting skill declares `Proprietary`; the new skill has no explicit standalone redistribution license. This plan prepares discoverability and local use, but public upload or claiming open reuse remains out of scope until the owner chooses and confirms license terms.
+When this plan was written, the repository had no configured public remote, the reporting skill declared `Proprietary`, and the new skill had no explicit standalone redistribution license. This plan prepared discoverability and local use without publishing or claiming open reuse.
+
+## Subsequent licensing decision
+
+This plan records the release boundary at the time it was written. The user later chose MIT for the entire repository; [ADR 0003](../../../agent/adr/0003-repository-wide-mit-license.md) and the root `LICENSE` supersede the provisional per-skill licensing status above. The GitHub repository remains private until separately changed.

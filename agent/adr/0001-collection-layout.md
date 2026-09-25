@@ -24,4 +24,4 @@ Do not add a root-level router `SKILL.md` in this change. A root skill would nee
 
 - Directory names match existing frontmatter names; skill names and behavior are not changed by the move.
 - README and a small validator are required to keep entrypoints, links, and basic metadata discoverable.
-- Each skill's redistribution status remains separately documented until a repository-wide license decision is made.
+- At the time of this decision, redistribution status was unresolved. That provisional state was superseded by [ADR 0003](0003-repository-wide-mit-license.md), which applies MIT to the repository and all four independently installable skills.

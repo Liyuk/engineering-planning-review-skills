@@ -1,6 +1,6 @@
 # Repository guidance
 
-This repository is a collection of independently installable skills for Chinese-language engineering planning, technical review, and management reporting.
+This repository is a collection of independently installable skills for Chinese-language engineering planning, technical review, metric decisions, and management reporting.
 
 ## Source of truth
 
@@ -16,5 +16,5 @@ This repository is a collection of independently installable skills for Chinese-
 - When skill behavior changes, update or add eval cases that exercise the behavior and its boundary conditions.
 - Distinguish user-provided facts, sourced facts, measurements, estimates, inferences, assumptions, and unknowns. Never invent metrics, citations, or review findings to satisfy an output template.
 - Keep review and revision as separate actions unless the user explicitly requests both.
-- Keep each skill's license and redistribution status visible; do not infer a repository-wide license.
+- The root `LICENSE` is the canonical repository license. Each independently installable skill declares the same SPDX identifier in its frontmatter so the license remains visible when copied alone. Document any explicitly approved exception in both the skill and README.
 - Run `python3 scripts/validate_repo.py` after moving skill files or changing local references.
